@@ -1,0 +1,16 @@
+<!-- Filename: public/stats.html -->
+<h2>Have we met?</h2>
+Sort by: <a ng-click="changeSort('-views')">Most Views</a> | <a ng-click="changeSort('name')">Name</a>
+
+<div ng-show="cards.length == 0" style="padding-top: 10px">
+	You haven't added any contacts. Text {name}  {phone}  {email}  {venue} to 209-729-9385 to add a contact.
+</div>
+
+<div ng-repeat="card in cards | orderBy:sortField" style="border:1px solid black; padding:10px;">
+	<b>{{card.name}}</b><br />
+	<a href="tel:{{card.phone}}" ng-show="card.phone.length > 0">{{card.phone}} ({{card.type}})</a><br />
+	<a href="mailto:{{card.email}}" ng-show="card.email.length > 0">{{card.email}}</a><br />
+	{{card.venue}}<br />
+	{{card.timecreated | date:'MM/dd/yyyy HH:mm'}}<br />
+	{{card.views}} views
+</div>

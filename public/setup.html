@@ -1,0 +1,27 @@
+<!-- Filename: public/setup.html -->
+<h2>Setup {{profile.number}}</h2>
+
+Name:<br />
+<input type="text" ng-model="profile.name" /><br /><br />
+
+Message: Use ~~name~~ for contact name; ~~venue~~ for venue name; ~~link~~ for link to card<br />
+<textarea ng-model="profile.template" style="width: 100%; height: 150px"></textarea><br /><br />
+
+Links:<br />
+<div ng-repeat="resource in profile.resources">
+  <a ng-show="resource.type == 'email'" href="mailto:{{resource.value}}">Email: {{resource.value}}</a>
+  <a ng-show="resource.type == 'website'" href="{{resource.value}}">Website: {{resource.value}}</a>
+  <a ng-show="resource.type == 'phone'" href="tel:{{resource.value}}">Tel: {{resource.value}}</a>
+  <a ng-click="removeResource($index)">X</a>
+</div>
+
+<select ng-model="resourcetype">
+  <option value="email">Email</option>
+  <option value="phone">Phone</option>
+  <option value="website">Website</option>
+</select>
+<input ng-model="resourcevalue" />
+<input type="button" ng-click="addResource()" value="Add" /><br /><br />
+
+
+<input type="button" ng-click="saveProfile()" value="Save Profile" />

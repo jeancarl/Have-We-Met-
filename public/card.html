@@ -1,0 +1,8 @@
+<!-- Filename: public/card.html -->
+<h2>{{profile.name}}</h2>
+
+<div ng-repeat="resource in profile.resources">
+  <a ng-show="resource.type == 'email'" href="mailto:{{resource.value}}">Email: {{resource.value}}</a>
+  <a ng-show="resource.type == 'website'" href="{{resource.value}}">Website: {{resource.value}}</a>
+  <a ng-show="resource.type == 'phone'" href="tel:{{resource.value}}">Tel: {{resource.value}}</a>
+</div>
